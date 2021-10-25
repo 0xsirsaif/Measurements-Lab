@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style type="text/css">
+            *{
+                width: 400px;
+                margin: 0 auto;
+                padding: 12px;
+            }
+
+            #square{
+                height:100px; 
+                width:100px; 
+                background-color:rgb(127, 127, 127);
+            }
+        </style>
+    </head>
+
+    <body>
+        <div>
+            <span style="color:red"> <b>Red</b> </span>
+            <input type="range" value="127" min="0" max="255" oninput="updateSquareColor(this)">
+            <output id="redVal">127</output>
+        </div>
+        
+        <diV>
+            <span style="color:green"> <b>Green</b> </span>
+            <input type="range" value="127" min="0" max="255" oninput="updateSquareColor(this)">
+            <output id="greenVal">127</output>
+        </diV>
+        
+        <div>
+            <span style="color:blue"> <b>Blue</b> </span>
+            <input type="range" value="127" min="0" max="255" oninput="updateSquareColor(this)">
+            <output id="blueVal">127</output>
+        </div>
+        
+        <br>
+        <span> Color </span>
+        <div id="square"></div>
+
+        <script>
+            function updateSquareColor(me) {
+                me.nextElementSibling.value = me.value;
+                let redVal = document.getElementById('redVal').value;
+                let greenVal = document.getElementById('greenVal').value;
+                let blueVal = document.getElementById('blueVal').value; 
+                
+                document.getElementById('square').style.backgroundColor = `rgb(${redVal}, ${greenVal}, ${blueVal})` ;
+            };
+        </script>
+
+    </body>
+</html>
