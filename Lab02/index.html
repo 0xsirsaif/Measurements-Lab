@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+
+<style type="text/css">
+
+.first{
+    position: absolute;
+    left: 31%;
+    top: 40%;
+    width : 50%;
+    height: 50%;
+}
+.led{
+    width: 70%;
+}
+.txt2,.led{
+     
+     margin-top: 15Px;
+    
+}
+.txt1,.txt2{
+    color:white;
+    font-size: 20px;
+    
+}
+.led::after {
+  content: '255';
+  top: 18%;
+  left: 67%;
+  position: absolute;
+  color:white;
+}
+.led::before {
+  content: '0';
+  top: 18%;
+  left: 1.5%;
+  position: absolute;
+  color:white;
+}
+
+
+</style>
+
+<head>
+    <title>LED Control</title>
+</head>
+
+<body style="background-color:#3F3F3F;">  
+
+    <dev class="first">
+        <label class="txt1">Light Intensity</label><br>
+        <input type="range" min="0" max="255" step="1" value="0" class="led" id="led"> 
+        <label class="txt2" id="txt2" >Value:0</label>
+    </dev>
+
+    <script>
+        var HOST = location.origin.replace(/^http/, 'ws');
+        var ws = new WebSocket(HOST); //#A
+        
+        var button = document.getElementById("led");
+
+        button.oninput = function() {
+            let value = parseInt(this.value);
+            document.getElementById("txt2").innerHTML = `Value: ${value}`;
+            ws.send(value);
+        }
+
+        ws.onmessage = function(event){
+        }
+
+        ws.onopen = function(){
+        }
+
+        ws.onclose = function(){
+        }
+        
+    </script>
+
+</body>
+</html>
