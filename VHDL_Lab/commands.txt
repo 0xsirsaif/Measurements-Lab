@@ -1,0 +1,4 @@
+ghdl -s [module_filename] [test_bench_filename]
+ghdl -a [module_filename] [test_bench_filename]
+ghdl -e [test_bench_entity_name]
+ghdl -r [test_bench_entity_name] --vcd=[exe_filename].vcd
